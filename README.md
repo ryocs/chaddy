@@ -1,10 +1,10 @@
 # Chaddy
 Chaddy is a simple socketio based chat in terminal style.
 
-# Requierments Server
+# Requirements Server
 - NodeJS >= v12.19.0 
 
-# Requierments Client
+# Requirements Client
 - Chrome
 
 # Installation Server
