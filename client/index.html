@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Chadddy</title>
+    <script src="socket.io.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+
+    <div class="contentChat">
+
+        <div class="userList"></div>
+        <div class="chat"></div>
+
+        <div class="mainInput">
+            <span>></span>
+            <input type="text" id="inputMain" class="rq-form-element" autofocus />
+        </div>
+    </div>
+
+
+    <div class="contentMainMenu">
+
+        <div class="mainMenu">
+            <input type="text" class="inputUName" id="inpUserName" placeholder="Username">
+            <br>
+            <br>
+            <input type="text" class="inputUName" id="inpServerIp" placeholder="Serverip" value="localhost:5000">
+            <br>
+            <br>
+            <div class="colorSelector" id="colorSelector">
+                <div class="color" color="white" colorval="#FFFFFF" selected></div>
+                <div class="color" color="red" colorval="#FF0000"></div>
+                <div class="color" color="orange" colorval="#FFA500"></div>
+                <div class="color" color="yellow" colorval="#FFFF00"></div>
+                <div class="color" color="green" colorval="#008000"></div>
+                <div class="color" color="blue" colorval="#0000FF"></div>
+                <div class="color" color="violet" colorval="#EE82EE"></div>
+
+                <div class="color" color="gold" colorval="#FFD700"></div>
+                <div class="color" color="pink" colorval="#FFC0CB"></div>
+                <div class="color" color="cyan" colorval="#00FFFF"></div>
+            </div>
+            <br>
+            <br>
+            <button class="btnJoin">Join</button>
+        </div>
+        
+
+    </div>
+</body>
+</html>

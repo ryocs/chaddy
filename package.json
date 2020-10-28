@@ -1,0 +1,21 @@
+{
+  "name": "chaddy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ryocs",
+  "license": "ISC",
+  "dependencies": {
+    "ansi-color": "latest",
+    "carlo": "^0.9.46",
+    "chalk": "^4.1.0",
+    "clear": "^0.1.0",
+    "prompt": "^1.0.0",
+    "socket.io": "latest",
+    "socket.io-client": "latest",
+    "terminal-kit": "^1.43.0"
+  }
+}

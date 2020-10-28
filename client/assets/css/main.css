@@ -1,0 +1,187 @@
+@font-face {
+  font-family: 'Inconsolata';
+  src: url(../fonts/Inconsolata.ttf);
+}
+
+* {
+  font-family: 'Inconsolata', monospace;
+}
+
+body {
+  position: relative;
+  margin: 10px;
+  height: calc(100vh - 20px);
+  background-color: black;
+  color: white;
+}
+
+.contentMainMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  transition: 0.3s ease-in-out;
+}
+
+.contentChat {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mainMenu {
+  width: max-content;
+  height: auto;
+  margin: auto auto;
+}
+
+.inputUName {
+  height: 50px;
+  min-width: 300px;
+  font-size: 40pt;
+  text-align: center;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  padding: 10px 20px;
+}
+
+.btnJoin {
+  height: 80px;
+  width: 100%;
+  font-size: 40pt;
+  text-align: center;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  padding: 10px 20px;
+  transition: 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.btnJoin:hover {
+  background-color: white;
+  color: black;
+}
+
+.colorSelector {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.colorSelector .color {
+  width: calc(25% - 48px);
+  height: 40px;
+  background-color: red;
+  margin-top: 10px;
+  border: 4px solid transparent;
+  cursor: pointer;
+}
+
+.colorSelector .color:not(:nth-child(5n)) {
+  margin-right: 10px;
+}
+
+.colorSelector .color[color="white"] {
+  background-color: white;
+}
+
+.colorSelector .color[color="red"] {
+  background-color: red;
+}
+
+.colorSelector .color[color="orange"] {
+  background-color: orange;
+}
+
+.colorSelector .color[color="yellow"] {
+  background-color: yellow;
+}
+
+.colorSelector .color[color="green"] {
+  background-color: green;
+}
+
+.colorSelector .color[color="blue"] {
+  background-color: blue;
+}
+
+.colorSelector .color[color="violet"] {
+  background-color: violet;
+}
+
+.colorSelector .color[color="pink"] {
+  background-color: pink;
+}
+
+.colorSelector .color[color="gold"] {
+  background-color: gold;
+}
+
+.colorSelector .color[color="cyan"] {
+  background-color: cyan;
+}
+
+.colorSelector .color[selected] {
+  border: 4px solid #09ff00;
+}
+
+.userList {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.userList .user {
+  margin: 0 10px;
+}
+
+.chat {
+  flex-grow: 1.0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.msg {
+  font-size: 14pt;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.msg [part="sender"] {
+  margin: 0 10px 0 0;
+}
+
+.msg [part="msg"] {
+  margin: 0 0 0 10px;
+}
+
+.mainInput {
+  display: flex;
+  color: white;
+  font-size: 18pt;
+  width: 100%;
+}
+
+.mainInput span {
+  user-select: none;
+}
+
+.mainInput input {
+  background-color: transparent;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  color: white;
+  margin-left: 10px;
+  font-size: 18pt;
+  flex-grow: 1.0;
+}

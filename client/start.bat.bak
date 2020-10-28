@@ -1,0 +1,8 @@
+@echo off
+
+set CHROME_EXE=c:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+
+set CHROME_SETTINGS=
+set CHROME_SETTINGS=%CHROME_SETTINGS% --app=<path-to-chaddy-indexhtml>
+
+start "" "%CHROME_EXE%" %CHROME_SETTINGS%
