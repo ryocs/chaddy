@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", e => {
 
 
 function connect() {
-    socket = io('ws://' + ip);
+    socket = io.connect('http://' + ip + '/');
 
     socket.on('connect', () => {
         console.log(`connected as ${username} to ${ip}`);
