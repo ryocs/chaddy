@@ -1,6 +1,9 @@
 # Chaddy
 Chaddy is a simple socketio based chat in terminal style.
 
+![alt text](https://github.com/ryocs/chaddy/blob/main/images/mainmenu.png?raw=true)
+![alt text](https://github.com/ryocs/chaddy/blob/main/images/chat.png?raw=true)
+
 # Requirements Server
 - NodeJS >= v12.19.0 
 
