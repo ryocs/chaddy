@@ -13,26 +13,6 @@ let lockscroll = false;
 
 let divUserList;
 
-/*socket.on('connect', () => {
-  // either with send()
-
-  socket.emit('new_user', {username: username});
-
-    socket.on('message', function(data) {
-        chattext.push(data);
-        //drawChat(false);
-    });  
-
-    socket.on('userlist',data => userlist = data);
-    socket.on('load_chat',data => {
-        chattext = data
-        //drawChat(true);
-    });  
-
-    socket.emit('userlist');
-    socket.emit('load_chat');
-});*/
-
 document.addEventListener("DOMContentLoaded", e => {
 
     divUserList = document.querySelector(".userList");
