@@ -48,17 +48,34 @@ body {
   font-size: 40pt;
   text-align: center;
   border: 2px solid white;
+  border-radius: 5px;
   background-color: transparent;
   color: white;
   padding: 10px 20px;
 }
 
-.btnJoin {
+@media (max-width: 700px) {
+  .inputUName {
+    font-size: 30pt;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 500px) {
+  .inputUName {
+    font-size: 20pt;
+    max-width: 200px;
+  }
+}
+
+.btn {
+  user-select: none;
   height: 80px;
   width: 100%;
   font-size: 40pt;
   text-align: center;
   border: 2px solid white;
+  border-radius: 5px;
   background-color: transparent;
   color: white;
   padding: 10px 20px;
@@ -66,9 +83,85 @@ body {
   cursor: pointer;
 }
 
-.btnJoin:hover {
+.btn:hover {
   background-color: white;
   color: black;
+}
+
+.btn[disabled] {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+#mainMenu, #roomMenu {
+  transition: 0.25s ease-in-out;
+}
+
+.roomList {
+  user-select: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 500px;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 20px 40px;
+}
+
+.roomList .room {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  font-size: 30pt;
+  display: grid;
+  grid-template-columns: auto 200px;
+  padding: 5px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.roomList .room:hover {
+  border-color: red;
+}
+
+.roomList .room[selected] {
+  border-color: red;
+}
+
+.roomList .room [part="name"] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.roomList .room [part="usercount"] {
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .roomList {
+    max-width: 400px;
+    min-width: 300px;
+  }
+  .roomList .room {
+    grid-template-columns: auto 150px;
+    font-size: 20pt;
+  }
+}
+
+@media (max-width: 400px) {
+  .roomList {
+    max-width: 300px;
+    min-width: 100px;
+    padding: 5px;
+  }
+  .roomList .room {
+    grid-template-columns: auto 100px;
+    padding: 5px;
+    font-size: 15pt;
+  }
 }
 
 .colorSelector {
@@ -77,16 +170,14 @@ body {
 }
 
 .colorSelector .color {
-  width: calc(25% - 48px);
+  width: calc(25% - 50px);
   height: 40px;
   background-color: red;
   margin-top: 10px;
   border: 4px solid transparent;
+  border-radius: 5px;
   cursor: pointer;
-}
-
-.colorSelector .color:not(:nth-child(5n)) {
-  margin-right: 10px;
+  margin: 5px;
 }
 
 .colorSelector .color[color="white"] {

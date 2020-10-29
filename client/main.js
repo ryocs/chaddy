@@ -12,6 +12,7 @@ let drawnMessages = 0;
 let lockscroll = false;
 
 let divUserList;
+let currentroom = "default";
 
 document.addEventListener("DOMContentLoaded", e => {
 
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", e => {
     });
 
 
-    document.querySelector(".btnJoin").addEventListener("click", e => {
+    document.querySelector("#btnJoin").addEventListener("click", e => {
         username = document.querySelector("#inpUserName").value;
         ip = document.querySelector("#inpServerIp").value;
 
@@ -44,8 +45,16 @@ document.addEventListener("DOMContentLoaded", e => {
 
         connect();
 
-        document.querySelector(".contentMainMenu").style.transform = "translateX(-150%)";
-        inputMain.focus();
+        if(document.querySelector("#btnJoin").innerHTML == "Join") {
+            socket.emit("join", currentroom);
+            socket.emit("userlist", currentroom);
+            socket.emit("load_chat", currentroom);
+            document.querySelector(".contentMainMenu").style.transform = "translateX(-250%)";
+            setTimeout(() => {
+                document.querySelector(".contentMainMenu").style.display = "none";
+            }, 250);
+            inputMain.focus();
+        }
     });
 
     inputMain = document.querySelector("#inputMain");
@@ -72,24 +81,70 @@ function connect() {
       
         socket.emit('new_user', {username: username, color: color});
       
-          socket.on('message', function(data) {
-              chattext.push(data);
-              drawChat(false);
-          });  
+        socket.on('message', function(data) {
+            chattext.push(data);
+            drawChat(false);
+        });  
       
-          socket.on('userlist',data => {
-              userlist = data;
-              updateUserList();
+        socket.on('userlist',data => {
+            userlist = data;
+            updateUserList();
         });
 
-          socket.on('load_chat',data => {
-              chattext = data
-              drawChat(true);
-          });  
+        socket.on('roomlist',data => {
+            loadRooms(data);
+        });
+
+        socket.on('load_chat',data => {
+            chattext = data
+            drawChat(true);
+        });  
       
-          socket.emit('userlist');
-          socket.emit('load_chat');
+        socket.emit('roomlist');
+
       });
+}
+
+
+let loadRooms = (roomlist) => {
+    document.querySelector("#mainMenu").style.opacity = 0.0;
+    setTimeout(() => {
+        document.querySelector("#mainMenu").style.display = "none";
+        document.querySelector("#roomMenu").style.display = "";
+        document.querySelector("#roomMenu").style.opacity = 1.0;
+        document.querySelector("#btnJoin").innerHTML = "Join";
+    },250);
+
+    /*<div class="room" id="room_default" roomname="default" selected>
+                        <div part="name">Default</div>
+                        <div part="usercount">0 / 200</div>
+                    </div>*/
+    
+    document.querySelector("#roomList").innerHTML = "";
+    Object.keys(roomlist).forEach(room => {
+        let divRoom = document.createElement("div");
+        divRoom.className = "room";
+        divRoom.id = "room_" + room;
+        divRoom.setAttribute("roomname", room);
+        if (room == "default") divRoom.setAttribute("selected","");
+
+        divRoom.innerHTML = `<div part="name">${room}</div>` +
+                            `<div part="usercount">${roomlist[room].currentUsers} / ${roomlist[room].maxUsers}</div>`;
+        document.querySelector("#roomList").appendChild(divRoom);
+
+        divRoom.addEventListener('click', e => {
+            document.querySelectorAll("#roomList .room").forEach(r => {
+                r.removeAttribute("selected");
+                if (r == divRoom) r.setAttribute("selected", "");
+            });
+            currentroom = room;
+        });
+    });
+}
+
+let loadMainMenu = () => {
+    document.querySelector("#mainMenu").style.display = "";
+    document.querySelector("#mainMenu").style.opacity = 1.0;
 }
 
 let sendMessage = (msg) => {
@@ -140,6 +195,7 @@ let drawChat = (reset) => {
 
 let updateUserList = () => {
     divUserList.innerHTML = "";
+    console.log(userlist);
     Object.keys(userlist).forEach(key => {
         let userDiv = document.createElement("div");
         userDiv.className = "user";
